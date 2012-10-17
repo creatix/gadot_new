@@ -1,0 +1,76 @@
+﻿<%@ Master Language="VB" CodeFile="Main.master.vb" Inherits="Main" %>
+<%@ Register TagPrefix="modulus" TagName="sidepanel" Src="~/components/sidepanel.ascx" %>
+<%@ Register TagPrefix="modulus" TagName="footer" Src="~/components/footer.ascx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" media="all" />
+<script src="js/jquery-1.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/common00.js"></script>
+<script src="js/jquery00.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.js"></script>
+<script type="text/javascript" src="js/jquery02.js"></script>
+<script type="text/javascript">
+$(function () {
+$(".Flash").each(function (idx, obj) {
+var _this = $(obj);
+var _href = _this.children("a").attr("href");
+var _img = _this.children(".hdnBGI").val();
+_this.children("a").remove();
+_this.children(".hdnBGI").remove();
+_this.flash({
+src: '/scripts/videoPlayerHP.swf?file=' + _href,
+width: 790,
+height: 930,
+allowFullScreen: true,
+wMode: 'transparent'
+});
+_this.css("backgroundImage", "url('" + _img + "')");
+});
+});
+</script>
+
+<asp:ContentPlaceHolder id="Header" runat="server">
+</asp:ContentPlaceHolder>
+
+</head>
+
+<!--Wrapper starts from here -->
+<body>
+<div class="wrapper">
+  <div class="rightPic one">
+  	<asp:ContentPlaceHolder id="leftpanel" runat="server">
+		<img src="img/leftsidepic.jpg" alt="Giga" />
+	</asp:ContentPlaceHolder>
+	</div>
+  <!-- Left Nav -->
+  <div class="leftNav one">
+    <div class="logo"><a href="index.aspx"><img src="img/Giga_logo.png" alt="Giga logo" title="Giga Logo" /></a></div>
+    <div class="nav clearfix">
+		<modulus:sidepanel id="sidepanel1" runat="server" />
+      
+    </div>
+    <div class="lg clearfix"> <span><a href="#">English&nbsp;&nbsp;<img src="img/english.png" alt="" /></a></span>
+      <pre><a href="#"><img src="img/facebook.png" alt="" />&nbsp;&nbsp;פייסבוק</a></pre>
+    </div>
+    <div class="left_buttom"><img src="img/image_buttom.png"  alt="" /></div>
+  </div>
+  <!-- midContent -->
+  <div class="midContent one">
+    <div class="Content">
+	
+	<asp:ContentPlaceHolder id="Main" runat="server">
+	</asp:ContentPlaceHolder>
+      
+    	<modulus:footer id="footer1" runat="server" />
+		
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
